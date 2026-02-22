@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Lockscreen version="2" frameRate="60" displayDesktop="false" screenWidth="1080" compiler="true">
+    <ExternalCommands>
+        <Trigger action="resume">
+            <ExternCommand command="disableChargeAnim" numPara="1"/>
+            <BinderCommand name="MiSteps_vp6zmq" command="refresh"/>
+            <BinderCommand name="WeatherProvider_vp6zmq" command="refresh"/>
+            <VariableCommand name="f2_vp6zmq" expression="0"/>
+            <VariableCommand name="f2_vp6zmq" expression="1" delay="80"/>
+            <VariableCommand name="py2_vp6zmq" expression="#time" delay="80"/>
+        </Trigger>
+    </ExternalCommands>
+    <VariableBinders>
+        <ContentProviderBinder name="data_quyyjn" uri="content://keyguard.notification/notifications" columns="icon,title,content,time,info,subtext,key" countName="hasnotifications">
+            <List name="notification_list_quyyjn"/>
+        </ContentProviderBinder>
+    </VariableBinders>
+    <Group name="blok_jlblim6p" visibility="1" x="0" y="0" w="#view_width" h="#view_height" rotation="0">
+        <!-- 锁屏通知-->
+        <Var expression="1" name="notification_vp6zmq"/>
+        <Var expression="#screen_width" name="sw_vp6zmq"/>
+        <Var expression="#screen_height" name="sh_vp6zmq"/>
+        <Var const="true" expression="ifelse(#screen_height-1920,#screen_height-1920,0)" name="dh_vp6zmq"/>
+        <!-- 充电定义动画用mask -->
+        <Var name="charge_vp6zmq">
+            <VariableAnimation>
+                <AniFrame time="0" value="0"/>
+                <AniFrame time="6000" value="279"/>
+            </VariableAnimation>
+        </Var>
+        <!-- 充电定义动画用mask -->
+        <Var name="charge1_vp6zmq">
+            <VariableAnimation>
+                <AniFrame time="0" value="0"/>
+                <AniFrame time="6000" value="283"/>
+            </VariableAnimation>
+        </Var>
+        <!-- 倒计时 -->
+        <Var expression="eq((#year%4),0)*ne((#year%100),0)+eq((#year%400),0)" name="leap_year_vp6zmq"/>
+        <Var expression="ifelse(#leap_year_vp6zmq,366,365)" name="max_year_vp6zmq"/>
+        <Var expression="ifelse(eq(#month,1),3,eq(#month,2),ifelse(#leap_year_vp6zmq,4,3),eq(#month,3),ifelse(#leap_year_vp6zmq,7,6),eq(#month,4),ifelse(#leap_year_vp6zmq,9,8),eq(#month,5),ifelse(#leap_year_vp6zmq,12,11),eq(#month,6),ifelse(#leap_year_vp6zmq,14,13),eq(#month,7),ifelse(#leap_year_vp6zmq,17,16),eq(#month,8),ifelse(#leap_year_vp6zmq,20,19),eq(#month,9),ifelse(#leap_year_vp6zmq,22,21),eq(#month,10),ifelse(#leap_year_vp6zmq,25,24),eq(#month,11),ifelse(#leap_year_vp6zmq,27,26),0)" name="last_day_vp6zmq"/>
+        <Var expression="#month*28+#last_day_vp6zmq+#date" name="prass_day_vp6zmq"/>
+        <Var expression="#max_year_vp6zmq-#prass_day_vp6zmq" name="ts_n_vp6zmq"/>
+        <Var expression="#ts_n_vp6zmq*24*60*60" name="t_n_vp6zmq"/>
+        <Var expression="#max_year_vp6zmq*24*60*60" name="z_n_vp6zmq"/>
+        <Var expression="ifelse(eq(#day_of_week-1,0),7,#day_of_week-1)" name="w_vp6zmq"/>
+        <Var expression="(7-#w_vp6zmq)*24*60*60" name="t_w_vp6zmq"/>
+        <Var expression="7*24*60*60" name="z_w_vp6zmq"/>
+        <Var expression="#hh_vp6zmq*60*60+(59-#minute)*60+(59-#second)" name="t_d_vp6zmq"/>
+        <Var expression="24*60*60" name="z_d_vp6zmq"/>
+        <Var name="midhour_vp6zmq" expression="ifelse(eq(#time_format,0),ifelse(eq(#ampm,1),ifelse(eq(#hour12,12),12,#hour12+12),ifelse(eq(#hour12,12),0,#hour12)),#hour24)"/>
+        <Var expression="ifelse(gt(#midhour_vp6zmq,24),23-#midhour_vp6zmq+12,23-#midhour_vp6zmq)" name="hh_vp6zmq"/>
+        <Var expression="59-#minute" name="min_vp6zmq"/>
+        <Var name="ppy2_vp6zmq" expression="min(abs(#py2_vp6zmq-#time),1000)/1000"/>
+        <Var name="shpy2_vp6zmq" expression="ifelse(#f2_vp6zmq,1+2*(#ppy2_vp6zmq-1)*(#ppy2_vp6zmq-1)*(#ppy2_vp6zmq-1)+1*(#ppy2_vp6zmq-1)*(#ppy2_vp6zmq-1),0)"/>
+        <!-- 喝水 -->
+        <Var name="zzzzz_vp6zmq" expression="#time" threshold="1">
+            <Trigger>
+                <VariableCommand name="shui_gg_vp6zmq" expression="0" condition="ne(#shui_time_vp6zmq,#date)"/>
+                <VariableCommand name="mokuai16_vp6zmq" expression="0" condition="ne(#mokuai16_time,#date)"/>
+                <VariableCommand name="mokuai17_vp6zmq" expression="0" condition="ne(#mokuai17_time,#date)"/>
+                <VariableCommand name="mokuai18_vp6zmq" expression="0" condition="ne(#mokuai18_time,#date)"/>
+                <VariableCommand name="mokuai19_vp6zmq" expression="0" condition="ne(#mokuai19_time,#date)"/>
+            </Trigger>
+        </Var>
+        <!-- 居中 -->
+        <Image align="center" alignV="center" src="b.jpg" x="#screen_width/2" y="#screen_height/2"/>
+        <!-- 双屏 -->
+        <Group visibility="eq(#mokuai7_vp6zmq,0)" x="0" y="0">
+            <!-- 居中 -->
+            <Image align="center" alignV="center" src="c/1.jpg" x="#screen_width/2" y="#screen_height/2"/>
+            <!-- 动画. -->
+            <Image align="center" alignV="center" src="c/1.jpg" visibility="#mokuai1_vp6zmq" x="#screen_width/2" y="#screen_height/2"/>
+            <Image align="center" alignV="center" visibility="not(#mokuai1_vp6zmq)" x="#screen_width/2" y="#screen_height/2">
+                <SourcesAnimation>
+                    <Source src="c/1.jpg" time="0"/>
+                    <Source src="c/2.jpg" time="200"/>
+                    <Source src="c/3.jpg" time="400"/>
+                    <Source src="c/4.jpg" time="600"/>
+                    <Source src="c/5.jpg" time="800"/>
+                    <Source src="c/6.jpg" time="1000"/>
+                    <Source src="c/7.jpg" time="1200"/>
+                    <Source src="c/1.jpg" time="1400"/>
+                </SourcesAnimation>
+            </Image>
+            <!-- 面板 -->
+            <Image src="2.png" x="0" y="0" w="1080" h="#screen_height"/>
+            <!-- 向上 -->
+            <Group y="1080-1080*#shpy2_vp6zmq" x="0">
+                <!-- 面板 -->
+                <Image align="center" alignV="center" src="kt.png" x="#screen_width/2" y="#screen_height/2"/>
+                <!-- 时间位置 -->
+                <Image name="hour_first_vp6zmq" src="time/time.png" srcid="ifelse(#time_format,#hour24/10,ifelse(eq(#hour12,0),1,#hour12/10))" x="835" y="1291+#dh_vp6zmq/2"/>
+                <Image name="hour_second_vp6zmq" src="time/time.png" srcid="ifelse(#time_format,#hour24%10,ifelse(eq(#hour12,0),2,#hour12%10))" x="850" y="1378+#dh_vp6zmq/2"/>
+                <Image src="time/time_dot.png" x="891" y="1511+#dh_vp6zmq/2"/>
+                <Image src="time/time1.png" srcid="int(#minute/10)" x="873" y="1517+#dh_vp6zmq/2"/>
+                <Image src="time/time1.png" srcid="int(#minute%10)" x="888" y="1604+#dh_vp6zmq/2"/>
+                <!-- 月 -->
+                <Image src="time/date.png" srcid="(#month+1)/10" x="831" y="1452+#dh_vp6zmq/2"/>
+                <Image src="time/date.png" srcid="(#month+1)%10" x="834" y="1473+#dh_vp6zmq/2"/>
+                <Image src="time/date_dot.png" x="852" y="1509+#dh_vp6zmq/2"/>
+                <!-- 日 -->
+                <Image src="time/date.png" srcid="#date/10" x="837" y="1507+#dh_vp6zmq/2"/>
+                <Image src="time/date.png" srcid="#date%10" x="840" y="1528+#dh_vp6zmq/2"/>
+                <!-- 显示周几 -->
+                <Image src="time/week.png" srcid="#day_of_week" x="842" y="1577+#dh_vp6zmq/2"/>
+                <!-- 数字显示小时 -->
+                <Image y="1585+#dh_vp6zmq/2" x="748" src="dj/dj.png" srcid="#hh_vp6zmq/10"/>
+                <Image y="1603+#dh_vp6zmq/2" x="748" src="dj/dj.png" srcid="#hh_vp6zmq%10"/>
+                <Image y="1670+#dh_vp6zmq/2" x="757" src="dj/dj.png" srcid="#min_vp6zmq/10"/>
+                <Image y="1688+#dh_vp6zmq/2" x="757" src="dj/dj.png" srcid="#min_vp6zmq%10"/>
+                <!-- 相机 -->
+                <Button h="328" w="169" visibility="#notice_down==0" x="507" y="1114+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.camera" class="com.android.camera.Camera">
+                                <Extra name="ShowCameraWhenLocked" type="boolean" expression="1"/>
+                                <Extra name="StartActivityWhenLocked" type="boolean" expression="1"/>
+                            </IntentCommand>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 相册 -->
+                <Button h="188" w="121" visibility="#notice_down==0" x="323" y="1242+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.miui.gallery" class="com.miui.gallery.activity.HomePageActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 联系人（新） -->
+                <Button h="284" w="137" visibility="#notice_down==0" x="77" y="1502+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.contacts" class="com.android.contacts.activities.PeopleActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+            </Group>
+            <!-- 向下 -->
+            <Group y="1080*#shpy2_vp6zmq-1080" x="0">
+                <!-- 面板 -->
+                <Image align="center" alignV="center" src="kt1.png" x="#screen_width/2" y="#screen_height/2"/>
+                <Group visibility="eq(#mokuai2_vp6zmq,0)" x="0" y="0">
+                    <!-- y轴变化电量 -->
+                    <Group visibility="ifelse(eq(#battery_state,1),0,eq(#battery_state,3),1,1)" x="0" y="0">
+                        <Image src="cd/cdbg.png" x="976" y="77+#dh_vp6zmq/2"/>
+                        <Image src="cd/cd.png" x="976" y="77+#dh_vp6zmq/2">
+                            <Mask src="cd/mask.png" x="0" y="-279-(#battery_level/100*279)"/>
+                        </Image>
+                    </Group>
+                    <Group visibility="eq(#battery_state,1)" x="0" y="0">
+                        <Image src="cd/cdbg.png" x="976" y="77+#dh_vp6zmq/2"/>
+                        <Image src="cd/cd.png" x="976" y="77+#dh_vp6zmq/2">
+                            <Mask align="absolute" alignV="absolute" src="cd/mask.png" x="976" y="77-279-#charge_vp6zmq+#dh_vp6zmq/2"/>
+                        </Image>
+                    </Group>
+                    <!-- 数字显示电量 -->
+                    <Image name="cd/dj_1" src="cd/dj.png" srcid="#battery_level/100" visibility="eq(#battery_level,100)" x="1002" y="176+#dh_vp6zmq/2"/>
+                    <Image name="cd/dj_2" src="cd/dj.png" srcid="#battery_level/10%10" visibility="gt(#battery_level,9)*le(#battery_level,100)" x="999" y="193+#dh_vp6zmq/2"/>
+                    <Image name="dj_3_vp6zmq" src="cd/dj.png" srcid="#battery_level%10" x="996" y="210+#dh_vp6zmq/2"/>
+                    <Image name="cd/dj_4" src="cd/dj_dot.png" x="993" y="231+#dh_vp6zmq/2"/>
+                </Group>
+                <!-- 短信 -->
+                <Button h="218" w="103" visibility="#notice_down==0" x="327" y="104+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.mms" class="com.android.mms.ui.MmsTabActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 拨号 -->
+                <Button h="222" w="143" visibility="#notice_down==0" x="117" y="268+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.contacts" class="com.android.contacts.activities.TwelveKeyDialer"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 主题 -->
+                <Button h="121" w="136" visibility="#notice_down==0" x="283" y="434+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.thememanager" class="com.android.thememanager.ThemeResourceTabActivity"/>
+                            <IntentCommand package="com.android.thememanager" class="com.android.thememanager.ThemeResourceProxyTabActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 6.壁纸切换. -->
+                <Image align="center" alignV="center" src="xz/c1.png" visibility="eq(#mokuai5_vp6zmq,0)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c2.png" visibility="eq(#mokuai5_vp6zmq,1)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c3.png" visibility="eq(#mokuai5_vp6zmq,2)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c4.png" visibility="eq(#mokuai5_vp6zmq,3)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c5.png" visibility="eq(#mokuai5_vp6zmq,4)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c6.png" visibility="eq(#mokuai5_vp6zmq,5)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c7.png" visibility="eq(#mokuai5_vp6zmq,6)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c8.png" visibility="eq(#mokuai5_vp6zmq,7)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c9.png" visibility="eq(#mokuai5_vp6zmq,8)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c10.png" visibility="eq(#mokuai5_vp6zmq,9)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c11.png" visibility="eq(#mokuai5_vp6zmq,10)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz/c12.png" visibility="eq(#mokuai5_vp6zmq,11)" x="#screen_width/2" y="#screen_height/2"/>
+                <!-- 壁纸切换按钮 -->
+                <Button h="172" w="166" visibility="#notice_down==0" x="454" y="240+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="ifelse(eq(#mokuai5_vp6zmq,11),0,#mokuai5_vp6zmq+1)" name="mokuai5_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 按钮 -->
+                <Image src="off.png" visibility="eq(#mokuai1_vp6zmq,1)" x="883" y="106+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai1_vp6zmq,0)" x="883" y="106+#dh_vp6zmq/2"/>
+                <Button h="108" w="85" visibility="#notice_down==0" x="893" y="80+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai1_vp6zmq)" name="mokuai1_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai2_vp6zmq,1)" x="768" y="113+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai2_vp6zmq,0)" x="768" y="113+#dh_vp6zmq/2"/>
+                <Button h="108" w="85" visibility="#notice_down==0" x="777" y="88+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai2_vp6zmq)" name="mokuai2_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai7_vp6zmq,0)" x="655" y="122+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai7_vp6zmq,1)" x="655" y="122+#dh_vp6zmq/2"/>
+                <Button h="108" w="85" visibility="#notice_down==0" x="667" y="92+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai7_vp6zmq)" name="mokuai7_vp6zmq" persist="true"/>
+                            <VariableCommand name="f2_vp6zmq" expression="0"/>
+                            <VariableCommand name="f2_vp6zmq" expression="1" delay="60"/>
+                            <VariableCommand name="py2_vp6zmq" expression="#time" delay="60"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai4_vp6zmq,0)" x="539" y="129+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai4_vp6zmq,1)" x="539" y="129+#dh_vp6zmq/2"/>
+                <Button h="108" w="85" visibility="#notice_down==0" x="551" y="100+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai4_vp6zmq)" name="mokuai4_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+            </Group>
+        </Group>
+        <!-- 双屏 -->
+        <Group visibility="eq(#mokuai7_vp6zmq,1)" x="0" y="0">
+            <!-- 动画. -->
+            <Image align="center" alignV="center" src="c1/1.jpg" visibility="#mokuai1_vp6zmq" x="#screen_width/2" y="#screen_height/2"/>
+            <Image align="center" alignV="center" visibility="not(#mokuai1_vp6zmq)" x="#screen_width/2" y="#screen_height/2">
+                <SourcesAnimation>
+                    <Source src="c1/1.jpg" time="0"/>
+                    <Source src="c1/2.jpg" time="200"/>
+                    <Source src="c1/3.jpg" time="400"/>
+                    <Source src="c1/4.jpg" time="600"/>
+                    <Source src="c1/5.jpg" time="800"/>
+                    <Source src="c1/6.jpg" time="1000"/>
+                    <Source src="c1/7.jpg" time="1200"/>
+                    <Source src="c1/1.jpg" time="1400"/>
+                </SourcesAnimation>
+            </Image>
+            <!-- 面板 -->
+            <Image src="2.png" x="0" y="0" w="1080" h="#screen_height"/>
+            <!-- 向左 -->
+            <Group y="0" x="1080-1080*#shpy2_vp6zmq">
+                <!-- 面板 -->
+                <Image align="center" alignV="center" src="kz1.png" x="#screen_width/2" y="#screen_height/2"/>
+                <!-- 时间位置 -->
+                <Image name="hour_first_vp6zmq" src="time1/time.png" srcid="ifelse(#time_format,#hour24/10,ifelse(eq(#hour12,0),1,#hour12/10))" x="514" y="111+#dh_vp6zmq/2"/>
+                <Image name="hour_second_vp6zmq" src="time1/time.png" srcid="ifelse(#time_format,#hour24%10,ifelse(eq(#hour12,0),2,#hour12%10))" x="601" y="96+#dh_vp6zmq/2"/>
+                <Image src="time1/time_dot.png" x="734" y="134+#dh_vp6zmq/2"/>
+                <Image src="time1/time1.png" srcid="int(#minute/10)" x="740" y="73+#dh_vp6zmq/2"/>
+                <Image src="time1/time1.png" srcid="int(#minute%10)" x="827" y="58+#dh_vp6zmq/2"/>
+                <!-- 月 -->
+                <Image src="time1/date.png" srcid="(#month+1)/10" x="675" y="209+#dh_vp6zmq/2"/>
+                <Image src="time1/date.png" srcid="(#month+1)%10" x="696" y="206+#dh_vp6zmq/2"/>
+                <Image src="time1/date_dot.png" x="732" y="219+#dh_vp6zmq/2"/>
+                <!-- 日 -->
+                <Image src="time1/date.png" srcid="#date/10" x="730" y="203+#dh_vp6zmq/2"/>
+                <Image src="time1/date.png" srcid="#date%10" x="751" y="203+#dh_vp6zmq/2"/>
+                <!-- 显示周几 -->
+                <Image src="time1/week.png" srcid="#day_of_week" x="800" y="176+#dh_vp6zmq/2"/>
+                <!-- 数字显示小时 -->
+                <Image y="308+#dh_vp6zmq/2" x="808" src="dj1/dj.png" srcid="#hh_vp6zmq/10"/>
+                <Image y="308+#dh_vp6zmq/2" x="826" src="dj1/dj.png" srcid="#hh_vp6zmq%10"/>
+                <Image y="299+#dh_vp6zmq/2" x="893" src="dj1/dj.png" srcid="#min_vp6zmq/10"/>
+                <Image y="299+#dh_vp6zmq/2" x="911" src="dj1/dj.png" srcid="#min_vp6zmq%10"/>
+                <Group visibility="eq(#mokuai2_vp6zmq,0)" x="0" y="0">
+                    <!-- x轴变化电量 -->
+                    <Group visibility="ifelse(eq(#battery_state,1),0,eq(#battery_state,3),1,1)" x="0" y="0">
+                        <Image src="cd1/cdbg.png" x="797" y="385+#dh_vp6zmq/2"/>
+                        <Image src="cd1/cd.png" x="797" y="385+#dh_vp6zmq/2">
+                            <Mask align="left" alignV="top" src="cd1/mask.png" x="0-283+(#battery_level/100*283)" y="0"/>
+                        </Image>
+                    </Group>
+                    <Group visibility="eq(#battery_state,1)" x="0" y="0">
+                        <Image src="cd1/cdbg.png" x="795" y="385+#dh_vp6zmq/2"/>
+                        <Image src="cd1/cd.png" x="797" y="385+#dh_vp6zmq/2">
+                            <Mask align="absolute" alignV="absolute" src="cd1/mask.png" x="797-283+#charge1_vp6zmq" y="385+#dh_vp6zmq/2"/>
+                        </Image>
+                    </Group>
+                    <!-- 数字显示电量 -->
+                    <Image name="cd1/dj_1" src="cd1/dj.png" srcid="#battery_level/100" visibility="eq(#battery_level,100)" x="890" y="397+#dh_vp6zmq/2"/>
+                    <Image name="cd1/dj_2" src="cd1/dj.png" srcid="#battery_level/10%10" visibility="gt(#battery_level,9)*le(#battery_level,100)" x="907" y="396+#dh_vp6zmq/2"/>
+                    <Image name="dj_3_vp6zmq" src="cd1/dj.png" srcid="#battery_level%10" x="924" y="395+#dh_vp6zmq/2"/>
+                    <Image name="cd1/dj_4" src="cd1/dj_dot.png" x="945" y="394+#dh_vp6zmq/2"/>
+                </Group>
+                <!-- 喝水 -->
+                <Image x="775" y="518+#dh_vp6zmq/2" src="shui/gg.png" srcid="#shui_gg_vp6zmq"/>
+                <Button x="955" y="515+#dh_vp6zmq/2" visibility="#notice_down==0" w="72" h="72">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand name="shui_gg_vp6zmq" expression="(#shui_gg_vp6zmq-1)" condition="gt(#shui_gg_vp6zmq,0)" persist="true" delay="10"/>
+                            <VariableCommand name="shui_time_vp6zmq" expression="#date" persist="true" delay="10"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Button x="833" y="515+#dh_vp6zmq/2" visibility="#notice_down==0" w="72" h="72">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand name="shui_gg_vp6zmq" expression="(#shui_gg_vp6zmq+1)" condition="lt(#shui_gg_vp6zmq,8)" persist="true" delay="10"/>
+                            <VariableCommand name="shui_time_vp6zmq" expression="#date" persist="true" delay="10"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 按钮 -->
+                <Image src="off.png" visibility="eq(#mokuai1_vp6zmq,1)" x="943" y="1451+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai1_vp6zmq,0)" x="943" y="1451+#dh_vp6zmq/2"/>
+                <Button h="112" w="136" visibility="#notice_down==0" x="911" y="1402+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai1_vp6zmq)" name="mokuai1_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai2_vp6zmq,1)" x="950" y="1566+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai2_vp6zmq,0)" x="950" y="1566+#dh_vp6zmq/2"/>
+                <Button h="112" w="136" visibility="#notice_down==0" x="911" y="1520+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai2_vp6zmq)" name="mokuai2_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai7_vp6zmq,0)" x="959" y="1679+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai7_vp6zmq,1)" x="959" y="1679+#dh_vp6zmq/2"/>
+                <Button h="112" w="136" visibility="#notice_down==0" x="917" y="1637+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai7_vp6zmq)" name="mokuai7_vp6zmq" persist="true"/>
+                            <VariableCommand name="f2_vp6zmq" expression="0"/>
+                            <VariableCommand name="f2_vp6zmq" expression="1" delay="60"/>
+                            <VariableCommand name="py2_vp6zmq" expression="#time" delay="60"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <Image src="off.png" visibility="eq(#mokuai4_vp6zmq,0)" x="966" y="1795+#dh_vp6zmq/2"/>
+                <Image src="on.png" visibility="eq(#mokuai4_vp6zmq,1)" x="966" y="1795+#dh_vp6zmq/2"/>
+                <Button h="112" visibility="#notice_down==0" w="136" x="925" y="1754+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="not(#mokuai4_vp6zmq)" name="mokuai4_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+            </Group>
+            <!-- 向右 -->
+            <Group y="0" x="1080*#shpy2_vp6zmq-1080">
+                <!-- 面板 -->
+                <Image src="kz.png" x="-25" y="1094+#dh_vp6zmq/2"/>
+                <!-- 短信 -->
+                <Button h="103" w="218" visibility="#notice_down==0" x="18" y="1169+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.mms" class="com.android.mms.ui.MmsTabActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 拨号 -->
+                <Button h="143" w="222" visibility="#notice_down==0" x="182" y="1339+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.contacts" class="com.android.contacts.activities.TwelveKeyDialer"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 主题 -->
+                <Button h="136" w="121" visibility="#notice_down==0" x="53" y="1569+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <IntentCommand action="android.intent.action.MAIN" package="com.android.thememanager" class="com.android.thememanager.ThemeResourceTabActivity"/>
+                            <IntentCommand package="com.android.thememanager" class="com.android.thememanager.ThemeResourceProxyTabActivity"/>
+                            <ExternCommand command="unlock"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+                <!-- 6.壁纸切换. -->
+                <Image align="center" alignV="center" src="xz1/c1.png" visibility="eq(#mokuai5_vp6zmq,0)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c2.png" visibility="eq(#mokuai5_vp6zmq,1)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c3.png" visibility="eq(#mokuai5_vp6zmq,2)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c4.png" visibility="eq(#mokuai5_vp6zmq,3)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c5.png" visibility="eq(#mokuai5_vp6zmq,4)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c6.png" visibility="eq(#mokuai5_vp6zmq,5)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c7.png" visibility="eq(#mokuai5_vp6zmq,6)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c8.png" visibility="eq(#mokuai5_vp6zmq,7)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c9.png" visibility="eq(#mokuai5_vp6zmq,8)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c10.png" visibility="eq(#mokuai5_vp6zmq,9)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c11.png" visibility="eq(#mokuai5_vp6zmq,10)" x="#screen_width/2" y="#screen_height/2"/>
+                <Image align="center" alignV="center" src="xz1/c12.png" visibility="eq(#mokuai5_vp6zmq,11)" x="#screen_width/2" y="#screen_height/2"/>
+                <!-- 壁纸切换按钮 -->
+                <Button h="166" w="172" visibility="#notice_down==0" x="36" y="911+#dh_vp6zmq/2">
+                    <Triggers>
+                        <Trigger action="up">
+                            <VariableCommand expression="ifelse(eq(#mokuai5_vp6zmq,11),0,#mokuai5_vp6zmq+1)" name="mokuai5_vp6zmq" persist="true"/>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+            </Group>
+        </Group>
+        <!-- 碎屏特效. -->
+        <Group visibility="#mokuai4_vp6zmq" x="0" y="0">
+            <Image src="sp.png" x="0" y="0+#dh_vp6zmq/2"/>
+        </Group>
+        <!-- 任意解锁 -->
+        <Button h="#screen_height" w="#screen_width" visibility="#notice_down==0" x="0" y="0">
+            <Triggers>
+                <Trigger action="up">
+                    <ExternCommand command="unlock" condition="ifelse(gt(abs(#touch_begin_x-#touch_x),250),1,0)"/>
+                    <ExternCommand command="unlock" condition="ifelse(gt(abs(#touch_begin_y-#touch_y),250),1,0)"/>
+                </Trigger>
+            </Triggers>
+        </Button>
+    </Group>
+    <Group name="blok_k4z7n5cq" visibility="1">
+        <Button x="0" y="0" w="1080" h="#screen_height" visibility="#hasnotifications}0">
+            <Triggers>
+                <Trigger action="up,cancel">
+                    <VariableCommand name="notice_down" expression="0"/>
+                </Trigger>
+            </Triggers>
+        </Button>
+        <Var name="w_quyyjn" expression="1024" type="number"/>
+        <Var name="h_quyyjn" expression="186" type="number"/>
+        <Var name="scaleX_quyyjn" type="number" expression="max(0,1024/#w_quyyjn)" const="true"/>
+        <Var name="scaleY_quyyjn" type="number" expression="max(0,186/#h_quyyjn)" const="true"/>
+        <List name="notification_list_quyyjn" x="0" y="920" w="#screen_width" scaleX="#scaleX_quyyjn" scaleY="#scaleY_quyyjn" maxHeight="int(#h_quyyjn+20)*2" data="icon:bitmap,title:string,content:string,time:string,info:string,subtext:string,key:int" visibility="#hasnotifications" alpha="200">
+            <!-- 居中 -->
+            <Item x="540" y="0" w="#w_quyyjn" h="int(#h_quyyjn+20)" align="center">
+                <!-- 因为位置是 （0，0）只需要适配 w h -->
+                <Button x="0" y="0" w="1024" h="(#h_quyyjn+20)*#scaleY_quyyjn" alignChildren="true">
+                    <Normal>
+                        <Image src="notification_src/k4z7n5cq_notice_bg.png" alpha="255" w="#w_quyyjn" h="#h_quyyjn"/>
+                    </Normal>
+                    <Pressed>
+                        <Image src="notification_src/k4z7n5cq_notice_bg.png" alpha="230" w="#w_quyyjn" h="#h_quyyjn"/>
+                    </Pressed>
+                    <!-- 关闭按钮 -->
+                    <Image x="#w_quyyjn-66" y="#h_quyyjn/2" align="center" alignV="center" src="notification_src/k4z7n5cq_close.png"/>
+                    <!-- 通知图标 -->
+                    <Image name="icon_quyyjn" x="#h_quyyjn/2" y="#h_quyyjn/2" w="130" h="130" align="center" alignV="center"/>
+                    <Text name="title_quyyjn" x="#h_quyyjn" y="#h_quyyjn/2-28" w="int(#w_quyyjn-#h_quyyjn-132)-(180-(70*#time_format))" h="48" alignV="center" size="42" color="#ff000000" marqueeSpeed="30"/>
+                    <Text name="content_quyyjn" x="#h_quyyjn" y="#h_quyyjn/2+30" w="int(#w_quyyjn-#h_quyyjn-132)" h="42" alignV="center" size="36" color="#ff000000" marqueeSpeed="30" alpha="128"/>
+                    <Text name="time_quyyjn" x="#w_quyyjn-132" y="#h_quyyjn/2-28" align="right" alignV="center" size="36" color="#ff000000" alpha="128"/>
+                    <Triggers>
+                        <Trigger action="down">
+                            <VariableCommand name="notice_down" expression="1"/>
+                        </Trigger>
+                        <Trigger action="up">
+                            <IntentCommand action="com.miui.app.ExtraStatusBarManager.action_remove_keyguard_notification" broadcast="true">
+                                <Extra name="com.miui.app.ExtraStatusBarManager.extra_notification_key" type="int" expression="#notification_list_quyyjn.key"/>
+                                <!-- expression 0 通知消失 1 打开通知 -->
+                                <!-- 132 == 66 * 2 依据 关闭按钮 的位置 -->
+                                <Extra name="com.miui.app.ExtraStatusBarManager.extra_notification_click" type="int" expression="#touch_begin_x{0+1024-132*#scaleX_quyyjn"/>
+                            </IntentCommand>
+                        </Trigger>
+                    </Triggers>
+                </Button>
+            </Item>
+            <AttrDataBinders>
+                <AttrDataBinder target="icon_quyyjn" attr="bitmap" data="icon"/>
+                <AttrDataBinder target="title_quyyjn" attr="text" data="title"/>
+                <AttrDataBinder target="content_quyyjn" attr="text" data="content"/>
+                <AttrDataBinder target="time_quyyjn" attr="text" data="time"/>
+            </AttrDataBinders>
+        </List>
+    </Group>
+</Lockscreen>
