@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+================================================================
+  CHEATSHEET: CARA IMPLEMENTASI ANIMASI m3 KE MANIFEST MANAPUN
+================================================================
+
+LANGKAH SEBELUM PASTE:
+  1. Cari nama variabel screen height di tema tujuan
+     Cek di bagian atas manifest, contoh:
+       <Var name="sh" expression="#screen_height"/>   -> pakai #sh
+       <Var name="h"  expression="#screen_height"/>   -> pakai #h
+     Ganti semua #SH_VAR di bawah dengan nama yang sesuai
+
+  2. Cari nama variabel screen width (untuk referensi jika perlu)
+     Biasanya #sw atau #w
+
+  3. Pastikan ada Var untuk #qh (toggle state) — sudah include di bawah
+
+================================================================
+-->
+
+
+<!-- ============================================================
+     [WAJIB] STEP 1: TAMBAH VAR INI
+     Letakkan di bagian ATAS manifest, bersama Var lainnya
+     JANGAN duplikat jika sudah ada
+     ============================================================ -->
+
+<Var expression="#screen_height" name="sh"/>
+<!-- ^ GANTI "sh" sesuai konvensi tema. Jika tema sudah punya Var ini, SKIP -->
+
+<Var expression="0" name="qh"/>
+<!-- ^ State toggle animasi. 0=posisi atas, 1=posisi bawah, 2=animasi m1 (jika ada) -->
+
+
+<!-- ============================================================
+     [WAJIB] STEP 2: PASTE BLOK ANIMASI INI
+     Letakkan SEBELUM tag </Lockscreen> penutup
+     Letakkan SETELAH semua Group/Image konten utama tema
+     JANGAN taruh di dalam Group lain
+     ============================================================ -->
+
+<Group alpha="255">
+
+  <!-- [WAJIB] Button toggle — tap untuk ganti state qh -->
+  <!-- Sesuaikan x, y, w, h dengan area tap yang diinginkan -->
+  <Button h="151" w="335" x="373" y="1045+(#sh-2460)/2">
+    <!-- ^ GANTI #sh dengan nama var height tema kamu -->
+    <Triggers>
+      <Trigger action="up">
+        <VariableCommand expression="ifelse(le(#qh,1),#qh+1,0)" name="qh" persist="true"/>
+        <!-- ^ Toggle: 0->1->0 (loop 2 mode) -->
+        <!-- Jika pakai 3 mode (termasuk m1): ifelse(le(#qh,2),#qh+1,0) -->
+      </Trigger>
+    </Triggers>
+  </Button>
+
+  <!-- [WAJIB] Animasi m3 — MODE 0 (posisi atas/default) -->
+  <!-- Sesuaikan x dan y dengan layout tema -->
+  <Image src="one/m3/m.png" visibility="eq(#qh,0)" x="240" y="523+(#sh-2460)/2">
+    <!-- ^ GANTI #sh dengan nama var height tema kamu -->
+    <SourcesAnimation>
+      <Source src="one/m3/m_1.png" time="120"/>
+      <Source src="one/m3/m_2.png" time="240"/>
+      <Source src="one/m3/m_3.png" time="360"/>
+      <Source src="one/m3/m_4.png" time="480"/>
+      <Source src="one/m3/m_5.png" time="600"/>
+      <Source src="one/m3/m_6.png" time="720"/>
+      <Source src="one/m3/m_7.png" time="840"/>
+      <Source src="one/m3/m_8.png" time="960"/>
+      <Source src="one/m3/m_9.png" time="1080"/>
+      <!-- Loop otomatis karena tidak ada frame hold 10000000000 -->
+    </SourcesAnimation>
+  </Image>
+
+  <!-- [OPSIONAL] Animasi m3 — MODE 1 (posisi bawah/alternatif) -->
+  <!-- Hapus blok ini jika hanya butuh 1 mode -->
+  <Image src="one/m3/m.png" visibility="eq(#qh,1)" x="240" y="1900+(#sh-2460)/2">
+    <!-- ^ GANTI #sh dengan nama var height tema kamu -->
+    <SourcesAnimation>
+      <Source src="one/m3/m_1.png" time="120"/>
+      <Source src="one/m3/m_2.png" time="240"/>
+      <Source src="one/m3/m_3.png" time="360"/>
+      <Source src="one/m3/m_4.png" time="480"/>
+      <Source src="one/m3/m_5.png" time="600"/>
+      <Source src="one/m3/m_6.png" time="720"/>
+      <Source src="one/m3/m_7.png" time="840"/>
+      <Source src="one/m3/m_8.png" time="960"/>
+      <Source src="one/m3/m_9.png" time="1080"/>
+    </SourcesAnimation>
+  </Image>
+
+  <!-- [OPSIONAL] Animasi m1/girls — MODE 2 (satu kali putar, berhenti di frame akhir) -->
+  <!-- Hapus blok ini jika tidak pakai mode 3 -->
+  <Image name="m1" src="one/girls/frame_0.png" visibility="eq(#qh,2)" x="425" y="944+(#sh-2460)/2">
+    <!-- ^ GANTI #sh dengan nama var height tema kamu -->
+    <SourcesAnimation>
+      <Source src="one/girls/frame_0.png"  time="100"/>
+      <Source src="one/girls/frame_1.png"  time="200"/>
+      <!-- ... tambah frame sesuai kebutuhan ... -->
+      <Source src="one/girls/frame_42.png" time="4300"/>
+      <Source src="one/girls/frame_42.png" time="10000000000"/>
+      <!-- ^ Frame terakhir di-hold selamanya = tidak loop -->
+    </SourcesAnimation>
+  </Image>
+
+</Group>
+
+<!-- ============================================================
+     CHECKLIST SEBELUM TEST
+     ============================================================
+
+  [ ] Nama var height (#sh / #h / dll) sudah disesuaikan
+  [ ] Var qh sudah ditambahkan di bagian atas
+  [ ] Folder one/m3/ berisi m.png + m_1.png s/d m_9.png
+  [ ] Folder one/girls/ berisi frame_0.png s/d frame_42.png (jika pakai)
+  [ ] Blok Group ditaruh SEBELUM </Lockscreen>, SETELAH konten utama
+  [ ] Group alpha="255" — JANGAN pakai expression yang referensi var tidak ada
+  [ ] Tidak ada Var lain yang belum terdefinisi di dalam blok ini
+
+  JANGAN lakukan:
+  [ ] Taruh di dalam Group lain yang punya alpha expression
+  [ ] Copy #sh mentah-mentah tanpa cek nama var tema tujuan
+  [ ] Hapus Var qh (toggle tidak akan berfungsi)
+
+     ============================================================ -->
