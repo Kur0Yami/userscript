@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Lockscreen frameRate="60" screenWidth="1080" version="1" vibrate="false">
+  <VariableBinders>
+    <ContentProviderBinder columns="city_id,city_name,weather_type,aqilevel,description,temperature,temperature_range,forecast_type,tmphighs,tmplows,wind,humidity,sunrise,sunset,pressure,weathernamesfrom,publish_time,temperature_unit,somatosensory,kinect" countName="hasweather" name="WeatherProvider" uri="content://weather/actualWeatherData/1">
+      <Variable column="city_name" name="weather_location" type="string"/>
+      <Variable column="weather_type" name="weather_id" type="int"/>
+      <Variable column="weather_type" name="weather_type" type="string[]"/>
+      <Variable column="temperature" name="weather_temperature" type="int"/>
+      <Variable column="description" name="weather_description" type="string"/>
+      <Variable column="tmphighs" name="tmphighs" type="string"/>
+      <Variable column="tmplows" name="tmplows" type="string"/>
+      <Variable column="forecast_type" name="weather_forecast_type" type="string[]"/>
+      <Variable column="weathernamesfrom" name="weather_weathernamesfrom" type="string[]"/>
+      <Trigger>
+        <VariableCommand expression="ifelse(#weather_aqi}=0**#weather_aqi{=50,&apos;空气优&apos;,#weather_aqi}50**#weather_aqi{=100,&apos;空气良好&apos;,#weather_aqi}100**#weather_aqi{=150,&apos;轻度污染&apos;,#weather_aqi}150**#weather_aqi{=200,&apos;中度污染&apos;,#weather_aqi}200**#weather_aqi{=300,&apos;重度污染&apos;,#weather_aqi}300,&apos;严重污染&apos;,&apos;获取信息异常&apos;)" name="air_quality" type="string"/>
+        <VariableCommand expression="ifelse(#weather_id}25||#weather_id{0,0, (#weather_id}=4**#weather_id{=6||#weather_id}=8**#weather_id{=11||#weather_id==25),4,#weather_id}=13**#weather_id{=17,13 ,#weather_id}=18**#weather_id{=21||#weather_id==23,18,#weather_id)" name="weatherId"/>
+      </Trigger>
+    </ContentProviderBinder>
+  </VariableBinders>
+  <ExternalCommands>
+    <Trigger action="resume">
+      <VariableCommand expression="#second-1" name="secon"/>
+      <VariableCommand expression="0" name="hhhhhhhh"/>
+      <Command target="shan1.animation" value="play"/>
+      <Command target="shan2.animation" value="play"/>
+      <!--Command target="tq.animation" value="play"/>
+   <Command target="wx.animation" value="play"/>
+   <Command target="zf.animation" value="play"/>
+   <Command target="xj.animation" value="play"/>
+   <Command target="biao.animation" value="play"/>
+   <Command target="te.animation" value="play"/>
+   <Command target="llq.animation" value="play"/>
+   <Command target="dj.animation" value="play"/-->
+
+    </Trigger>
+  </ExternalCommands>
+  <Var expression="int(#time/100)*le(#hhhhhhhh,2)" name="hhhh" threshold="1">
+    <Trigger>
+      <VariableCommand expression="ifelse(eq(#hhhhhhhh,3),3,#hhhhhhhh+1)" name="hhhhhhhh"/>
+      <VariableCommand condition="eq(#hhhhhhhh,3)" expression="#second-1" name="secon"/>
+    </Trigger>
+  </Var>
+  <Var expression="int(#time/1000)" name="miao" threshold="1">
+    <Trigger>
+      <VariableCommand expression="ifelse(ge(#secon+1,60),0,le(#secon,58),#secon+1,0)" name="secon"/>
+    </Trigger>
+  </Var>
+  <Var expression="#screen_width" name="sw"/>
+  <Var expression="#screen_height" name="sh"/>
+  <Var expression="#y1*1000+#y2*100+#y3*10+#y4" name="per_year"/>
+  <Var expression="#m1*10+#m2" name="per_month"/>
+  <Var expression="#d1*10+#d2" name="per_date"/>
+  <Var expression="eq((#year%4),0)*ne((#year%100),0)+eq((#year%400),0)" name="lya"/>
+  <Var expression="eq((#per_year%4),0)*ne((#per_year%100),0)+eq((#per_year%400),0)" name="ly"/>
+  <Var expression="ge(#month,1)*31+ge(#month,2)*(28+#lya)+ge(#month,3)*31+ge(#month,4)*30+ge(#month,5)*31+ge(#month,6)*30+ge(#month,7)*31+ge(#month,8)*31+ge(#month,9)*30+ge(#month,10)*31+ge(#month,11)*30+ge(#month,12)*31+#date" name="ca"/>
+  <Var expression="gt(#per_month,1)*31+gt(#per_month,2)*(28+#ly)+gt(#per_month,3)*31+gt(#per_month,4)*30+gt(#per_month,5)*31+gt(#per_month,6)*30+gt(#per_month,7)*31+gt(#per_month,8)*31+gt(#per_month,9)*30+gt(#per_month,10)*31+gt(#per_month,11)*30+gt(#per_month,12)*31+#per_date" name="ea"/>
+  <Var expression="ifelse(eq(#per_month,12)*ge(#per_date,22)+eq(#per_month,1)*le(#per_date,19),0,eq(#per_month,1)*ge(#per_date,20)+eq(#per_month,2)*le(#per_date,18),1,eq(#per_month,2)*ge(#per_date,19)+eq(#per_month,3)*le(#per_date,20),2,eq(#per_month,3)*ge(#per_date,21)+eq(#per_month,4)*le(#per_date,19),3,eq(#per_month,4)*ge(#per_date,20)+eq(#per_month,5)*le(#per_date,20),4,eq(#per_month,5)*ge(#per_date,21)+eq(#per_month,6)*le(#per_date,21),5,eq(#per_month,6)*ge(#per_date,22)+eq(#per_month,7)*le(#per_date,22),6,eq(#per_month,7)*ge(#per_date,23)+eq(#per_month,8)*le(#per_date,22),7,eq(#per_month,8)*ge(#per_date,23)+eq(#per_month,9)*le(#per_date,22),8,eq(#per_month,9)*ge(#per_date,23)+eq(#per_month,10)*le(#per_date,23),9,eq(#per_month,10)*ge(#per_date,24)+eq(#per_month,11)*le(#per_date,22),10,11)" name="xingzuo"/>
+  <Var expression="ifelse(le(#month+1,2)*le(#per_month,2),ifelse(gt(#ca,#ea),(365+#lya-#ca)+#ea,lt(#ca,#ea),#ea-#ca,0),ifelse(eq(#lya,1)*eq(#ly,0)*eq(#ca-#ea,1),0,gt(#ca,#ea),(365+#lya-#ca)+#ea,(eq(#lya,1)*eq(#ly,1)+eq(#lya,0)*eq(#ly,0))*lt(#ca,#ea),#ea-#ca,eq(#lya,1)*eq(#ly,0)*lt(#ca,#ea),(#ea+1)-#ca,eq(#lya,0)*eq(#ly,1)*lt(#ca,#ea),(#ea-1)-#ca,eq(#lya,0)*eq(#ly,1)*eq(#ca,#ea),365+#ly-1,eq(#ly,0)*eq(#lya,1)*eq(#ca,#ea),(#ea+1)-#ca,0))" name="next_day"/>
+  <Var expression="ifelse(gt(#per_month,#month+1)+eq(#per_month,#month+1)*gt(#per_date,#date),#year-#per_year-1,#year-#per_year)" name="sui"/>
+  <Var expression="365+#lya-#ca" name="yxday"/>
+  <!--Var const="true" expression="2" name="time_format"/>
+    <Var expression="ifelse(eq(#ampm,1)*eq(#time_format,0)*lt(#hour12,12),#hour12+12,eq(#ampm,0)*eq(#time_format,0)*eq(#hour,12),0,#hour24)" name="BL20"/>
+    <Var expression="ifelse(gt(#BL20,24),23-#BL20+12,23-#BL20)" name="BL21"/>
+    <Var expression="ifelse(eq(#ampm,1)*eq(#time_format,0),#hour+12,eq(#ampm,0)*eq(#time_format,0)*eq(#hour,12),0,#hour)" name="BL22"/>
+    <Var expression="ifelse(gt(#BL22,24),23-#BL22+12,23-#BL22)" name="BL23"/>
+    <Var expression="ifelse(eq(#time_format,2),#BL23,#BL21)" name="Dr07"/-->
+
+  <Var expression="23-#hour24" name="yxhour"/>
+  <Var expression="59-#minute" name="yxminute"/>
+  <Var expression="59-#secon" name="yxsecon"/>
+  <Var expression="ifelse(eq(#month+1,4)+eq(#month+1,6)+eq(#month+1,9)+eq(#month+1,11),30,eq(#month+1,2),28+#lya,31)" name="mon"/>
+  <Var expression="#mon-#date" name="yxmon"/>
+  <Var expression="#per_month" name="m13"/>
+  <Var expression="#per_date" name="d13"/>
+  <Var expression="(ge(#month,1)*31+(28+#lya)*ge(#month,2)+ge(#month,3)*31+ge(#month,4)*30+ge(#month,5)*31+ge(#month,6)*30+ge(#month,7)*31+ge(#month,8)*31+ge(#month,9)*30+ge(#month,10)*31+ge(#month,11)*30+ge(#month,12)*31)+(365*#year+int(#year/4)+int(#year/400)-int(#year/100))+#date+1" name="da"/>
+  <Var expression="(gt(#m13,1)*31+(28+#ly)*gt(#m13,2)+gt(#m13,3)*31+gt(#m13,4)*30+gt(#m13,5)*31+gt(#m13,6)*30+gt(#m13,7)*31+gt(#m13,8)*31+gt(#m13,9)*30+gt(#m13,10)*31+gt(#m13,11)*30+gt(#m13,12)*31)+(365*#per_year+int(#per_year/4)+int(#per_year/400)-int(#per_year/100))+#d13-1" name="dz1"/>
+  <Var expression="ifelse(gt(#da,#dz1),#da-#dz1-1,0)" name="cunzai"/>
+  <Var name="alp">
+    <VariableAnimation>
+      <AniFrame time="0" value="255"/>
+      <AniFrame time="500" value="100"/>
+      <AniFrame time="1000" value="255"/>
+    </VariableAnimation>
+  </Var>
+  <Var expression="#csz+#time" name="cs" threshold="1">
+    <Trigger>
+      <VariableCommand condition="eq(#csz,0)" expression="2" name="y1" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="0" name="y2" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="2" name="y3" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="2" name="y4" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="0" name="m1" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="1" name="m2" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="0" name="d1" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="1" name="d2" persist="true"/>
+      <VariableCommand condition="eq(#csz,0)" expression="8" name="cc" persist="true"/>
+    </Trigger>
+  </Var>
+  <Var name="appani1">
+    <VariableAnimation>
+      <AniFrame time="0" value="-540"/>
+      <AniFrame time="500" value="0"/>
+      <AniFrame time="10000000000" value="0"/>
+    </VariableAnimation>
+  </Var>
+  <Var name="appani2">
+    <VariableAnimation>
+      <AniFrame time="0" value="0"/>
+      <AniFrame time="500" value="-540"/>
+      <AniFrame time="10000000000" value="-540"/>
+    </VariableAnimation>
+  </Var>
+  <Button h="#sh" visibility="not(#set)" w="#sw" x="0" y="0">
+    <Normal/>
+    <Triggers>
+      <Trigger action="up" condition="gt(#touch_y-#touch_begin_y,200)">
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="1" name="YY" persist="true"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="1" name="appmode1" persist="true"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="0" name="appmode2" persist="true"/>
+        <Command target="appani1.animation" value="stop"/>
+        <Command target="appani1.animation" value="play"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="(#set+1)%2" name="set" persist="true"/>
+      </Trigger>
+    </Triggers>
+  </Button>
+  <Button h="#sh" visibility="#set" w="#sw" x="0" y="0">
+    <Normal/>
+    <Triggers>
+      <Trigger action="up" condition="gt(#touch_y-#touch_begin_y,200)">
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="1" name="YY" persist="true"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="0" name="appmode1" persist="true"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" expression="1" name="appmode2" persist="true"/>
+        <Command target="appani2.animation" value="stop"/>
+        <Command target="appani2.animation" value="play"/>
+        <VariableCommand condition="gt(#touch_y-#touch_begin_y,200)" delay="500" expression="(#set+1)%2" name="set" persist="true"/>
+      </Trigger>
+    </Triggers>
+  </Button>
+  <Var expression="ifelse(#YY,#appmode1*#appani1+#appmode2*#appani2,ifelse(eq(#appmode1,0)*eq(#appmode2,1)+eq(#appmode1,0)*eq(#appmode2,0),-540,0))" name="yd"/>
+  <Wallpaper src="bg.jpg"/>
+  <Image src="one/wl.jpg" x="0" y="0"/>
+  <Image name="shan2" src="one/t1.png" x="0" y="#sh-(2460-1778)">
+    <PositionAnimation>
+      <Position time="0" x="0" y="100"/>
+      <Position time="500" x="0" y="0"/>
+      <Position time="10000000000" x="0" y="0"/>
+    </PositionAnimation>
+  </Image>
+  <Image src="one/cat.png" x="399" y="#sh-(2460-2248)">
+    <PositionAnimation>
+      <Position time="0" x="0" y="0"/>
+      <Position time="6000" x="1080" y="0"/>
+    </PositionAnimation>
+  </Image>
+  <Image src="one/lm.png" x="0" y="#sh-(2460-2304)"/>
+  <Image src="one/d1.png" x="544" y="#sh-(2460-2217)">
+    <PositionAnimation>
+      <Position time="0" x="0" y="0"/>
+      <Position time="6000" x="1080" y="0"/>
+    </PositionAnimation>
+  </Image>
+  <Image src="one/d2.ng" x="544-699" y="#sh-(2460-2217)">
+    <PositionAnimation>
+      <Position time="0" x="0" y="0"/>
+      <Position time="6000" x="1080" y="0"/>
+    </PositionAnimation>
+  </Image>
+  <Image name="shan1" src="one/t2.png" x="0" y="#sh-(2460-1861)">
+    <PositionAnimation>
+      <Position time="0" x="0" y="100"/>
+      <Position time="200" x="0" y="100"/>
+      <Position time="700" x="0" y="0"/>
+      <Position time="10000000000" x="0" y="0"/>
+    </PositionAnimation>
+  </Image>
+  <Group alpha="-#yd/540*255">
+    <Image src="one/time/time.png" srcid="ifelse(#time_format,#hour24/10,ifelse(eq(#hour12,0),1,#hour12/10))" x="337" y="353+(#sh-2460)/2"/>
+    <Image src="one/time/time.png" srcid="ifelse(#time_format,#hour24%10,ifelse(eq(#hour12,0),2,#hour12%10))" x="557" y="353+(#sh-2460)/2"/>
+    <Image src="one/time/time.png" srcid="int(#minute/10)" x="337" y="720+(#sh-2460)/2"/>
+    <Image src="one/time/time.png" srcid="int(#minute%10)" x="557" y="720+(#sh-2460)/2"/>
+    <Image src="one/week/week_bg.png" x="375" y="1051+(#sh-2460)/2"/>
+    <Button h="151" visibility="eq(#set,0)" w="335" x="373" y="1045+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <VariableCommand expression="ifelse(le(#qh,1),#qh+1,0)" name="qh" persist="true"/>
+          <Command target="m1.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="one/m1/m.png" visibility="eq(#qh,0)" x="240" y="523+(#sh-2460)/2">
+      <SourcesAnimation>
+        <Source src="one/m3/m_1.png" time="120"/>
+        <Source src="one/m3/m_2.png" time="240"/>
+        <Source src="one/m3/m_3.png" time="360"/>
+        <Source src="one/m3/m_4.png" time="480"/>
+        <Source src="one/m3/m_5.png" time="600"/>
+        <Source src="one/m3/m_6.png" time="720"/>
+        <Source src="one/m3/m_7.png" time="840"/>
+        <Source src="one/m3/m_8.png" time="960"/>
+        <Source src="one/m3/m_9.png" time="1080"/>
+      </SourcesAnimation>
+    </Image>
+    <Image src="one/m3/m.png" visibility="eq(#qh,1)" x="240" y="1900+(#sh-2460)/2">
+      <SourcesAnimation>
+        <Source src="one/m3/m_1.png" time="120"/>
+        <Source src="one/m3/m_2.png" time="240"/>
+        <Source src="one/m3/m_3.png" time="360"/>
+        <Source src="one/m3/m_4.png" time="480"/>
+        <Source src="one/m3/m_5.png" time="600"/>
+        <Source src="one/m3/m_6.png" time="720"/>
+        <Source src="one/m3/m_7.png" time="840"/>
+        <Source src="one/m3/m_8.png" time="960"/>
+        <Source src="one/m3/m_9.png" time="1080"/>
+      </SourcesAnimation>
+    </Image>
+    <Image name="m1" src="one/m2/m.png" visibility="eq(#qh,2)" x="425" y="944+(#sh-2460)/2">
+      <SourcesAnimation>
+        <Source src="one/m2/m_0.png" time="100"/>
+        <Source src="one/m2/m_1.png" time="200"/>
+        <Source src="one/m2/m_2.png" time="300"/>
+        <Source src="one/m2/m_3.png" time="400"/>
+        <Source src="one/m2/m_4.png" time="500"/>
+        <Source src="one/m2/m_4.png" time="10000000000"/>
+      </SourcesAnimation>
+    </Image>
+    <Image src="one/week/week.png" srcid="#day_of_week-1" x="389" y="1079+(#sh-2460)/2"/>
+    <Image src="one/date/date.png" srcid="int((#month+1)/10)" x="411" y="1232+(#sh-2460)/2"/>
+    <Image src="one/date/date.png" srcid="int((#month+1)%10)" x="469" y="1232+(#sh-2460)/2"/>
+    <Image src="one/date/dot.png" x="519" y="1257+(#sh-2460)/2"/>
+    <Image src="one/date/date.png" srcid="int(#date/10)" x="564" y="1232+(#sh-2460)/2"/>
+    <Image src="one/date/date.png" srcid="int(#date%10)" x="614" y="1232+(#sh-2460)/2"/>
+    <Image src="one/dl/tiao.png" x="86" y="#sh-(2460-2310)">
+      <Mask align="absolute" src="one/dl/mask.png" x="86" y="#sh-(2460-2310)-#battery_level*0.82"/>
+    </Image>
+    <Image src="one/dl/kuang.png" x="86" y="#sh-(2460-2304)"/>
+    <ImageNumber align="right" number="#battery_level" src="one/dl/n.png" x="218" y="#sh-(2460-2310)"/>
+    <Image src="one/dl/n1.png" x="218" y="#sh-(2460-2310)"/>
+  </Group>
+  <Group alpha="255+#yd/540*255" y="#yd">
+    <Image src="two/shui/shui.png" x="79" y="339+(#sh-2460)/2"/>
+    <Image src="two/shui/s.png" srcid="#shui" x="130" y="374+(#sh-2460)/2"/>
+    <Image src="two/shui/t1.png" x="108" y="350+(#sh-2460)/2"/>
+    <Image src="two/shui/jia1.png" x="277" y="343+(#sh-2460)/2"/>
+    <Image name="j1" src="two/shui/jia.png" x="277" y="343+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="0" time="600"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="77" visibility="eq(#set,1)" w="53" x="305" y="372+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <VariableCommand expression="ifelse(le(#shui,7),#shui+1,8)" name="shui" persist="true"/>
+          <Command target="j1.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/shui/jian1.png" x="277" y="474+(#sh-2460)/2"/>
+    <Image name="j2" src="two/shui/jian.png" x="277" y="474+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="0" time="600"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="75" visibility="eq(#set,1)" w="53" x="305" y="503+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <VariableCommand expression="ifelse(gt(#shui,0),#shui-1,0)" name="shui" persist="true"/>
+          <Command target="j2.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/shui/n.png" srcid="#shui" x="292" y="459+(#sh-2460)/2"/>
+    <Image src="two/shui/n1.png" x="315" y="459+(#sh-2460)/2"/>
+    <Image src="two/shui/n_8.png" x="337" y="459+(#sh-2460)/2"/>
+    <Image src="two/djs/djs_bg.png" x="79" y="671+(#sh-2460)/2"/>
+    <Image src="two/djs/d.png" srcid="int((#yxday/(365+#lya)*100)/11)" x="134" y="720+(#sh-2460)/2"/>
+    <ImageNumber align="right" number="#yxday" src="two/djs/n.png" x="292" y="767+(#sh-2460)/2"/>
+    <Image src="two/djs/d.png" srcid="int(#battery_level/11)" x="355" y="720+(#sh-2460)/2"/>
+    <ImageNumber align="right" number="#battery_level" src="two/djs/n.png" x="509" y="767+(#sh-2460)/2"/>
+    <Image src="two/djs/n1.png" x="518" y="773+(#sh-2460)/2"/>
+    <Image src="two/djs/c1.png" visibility="lt(#battery_level,20)" x="510" y="726+(#sh-2460)/2"/>
+    <Image src="two/djs/c2.png" visibility="ge(#battery_level,20)*lt(#battery_level,70)" x="510" y="726+(#sh-2460)/2"/>
+    <Image src="two/djs/c3.png" visibility="ge(#battery_level,70)*lt(#battery_level,100)" x="510" y="726+(#sh-2460)/2"/>
+    <Image src="two/djs/c4.png" visibility="eq(#battery_level,100)" x="510" y="726+(#sh-2460)/2"/>
+    <Image src="two/djs/d.png" srcid="int((#yxhour/24*100)/11)" x="133" y="839+(#sh-2460)/2"/>
+    <ImageNumber align="right" number="int(#yxhour/24*100)" src="two/djs/n.png" x="288" y="886+(#sh-2460)/2"/>
+    <Image src="two/djs/n1.png" x="298" y="891+(#sh-2460)/2"/>
+    <Image src="two/djs/d.png" srcid="int((#yxmon/#mon*100)/11)" x="353" y="839+(#sh-2460)/2"/>
+    <ImageNumber align="right" number="int(#yxmon/#mon*100)" src="two/djs/n.png" x="495" y="886+(#sh-2460)/2"/>
+    <Image src="two/djs/n1.png" x="504" y="891+(#sh-2460)/2"/>
+    <Image src="two/tq/tq_0.png" x="78" y="1004+(#sh-2460)/2"/>
+    <Image name="tq" src="two/tq/tq_1.png" x="78" y="1004+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="457" visibility="eq(#set,1)" w="180" x="108" y="1019+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <Command target="tq.animation" value="stop"/>
+          <Command target="tq.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/tq/t.png" srcid="#weatherId" x="127" y="1088+(#sh-2460)/2"/>
+    <Text align="center" alignV="center" color="#ffffff" format="%s°" paras="#weather_temperature" size="48" x="201" y="1253+(#sh-2460)/2"/>
+    <Text align="center" alignV="center" color="#ffffff" format="%s" paras="@weather_description" size="48" x="201" y="1322+(#sh-2460)/2"/>
+    <Text align="center" alignV="center" color="#ffffff" format="%s°" paras="@tmplows" size="24" x="166" y="1409+(#sh-2460)/2"/>
+    <Text align="center" alignV="center" color="#ffffff" format="%s°" paras="@tmphighs" size="24" x="239" y="1409+(#sh-2460)/2"/>
+    <Image src="two/wx_0.png" x="354" y="1004+(#sh-2460)/2"/>
+    <Image name="wx" src="two/wx_1.png" x="354" y="1004+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Image alpha="0" h="168" name="app_wx" srcExp="&apos;com.tencent.mm,com.tencent.mm.ui.LauncherUI&apos;" srcType="ApplicationIcon" w="168" x="0" y="0"/>
+    <Button h="207" visibility="eq(#set,1)" w="210" x="381" y="1016+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <IntentCommand action="android.intent.action.VIEW" condition="!#app_wx.bmp_width" uri="market://details?id=com.tencent.mm&amp;ref=mithemelocksreen"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.tencent.mm.plugin.offline.ui.WalletOfflineEntranceUI" condition="#app_wx.bmp_width" package="com.tencent.mm"/>
+          <ExternCommand command="unlock"/>
+          <Command target="wx.animation" value="stop"/>
+          <Command target="wx.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/zf_0.png" x="354" y="1261+(#sh-2460)/2"/>
+    <Image name="zf" src="two/zf_1.png" x="354" y="1261+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Image alpha="0" h="168" name="app_zfb" srcExp="&apos;com.eg.android.AlipayGphone,com.eg.android.AlipayGphone.AlipayLogin&apos;" srcType="ApplicationIcon" w="168" x="0" y="0"/>
+    <Button h="207" visibility="eq(#set,1)" w="210" x="381" y="1270+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <IntentCommand action="android.intent.action.VIEW" condition="!#app_zfb.bmp_width" uri="market://details?id=com.eg.android.AlipayGphone&amp;ref=mithemelocksreen"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.eg.android.AlipayGphone.FastStartActivity" condition="#app_zfb.bmp_width" package="com.eg.android.AlipayGphone"/>
+          <ExternCommand command="unlock"/>
+          <Command target="zf.animation" value="stop"/>
+          <Command target="zf.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Group>
+  <Image alpha="255+#yd/540*255" src="two/year/year_bg.png" x="78" y="1521+#yd+(#sh-2460)/2"/>
+  <Image alpha="255+#yd/540*255" src="two/year/tiao_0.png" x="104" y="1534+#yd+(#sh-2460)/2">
+    <Mask align="absolute" src="two/year/mask.png" x="104-380+int(#yxday/(365+#lya)*100)*3.8" y="1534+#yd+(#sh-2460)/2"/>
+  </Image>
+  <Group alpha="255+#yd/540*255" y="#yd">
+    <Image src="two/year/word.png" x="171" y="1590+(#sh-2460)/2"/>
+    <ImageNumber align="right" number="int(#yxday/(365+#lya)*100)" src="two/year/n.png" x="418" y="1587+(#sh-2460)/2"/>
+    <Image src="two/year/n1.png" x="418" y="1587+(#sh-2460)/2"/>
+    <Group visibility="eq(#app_qh,0)">
+      <Image src="two/dj/dj_bg.png" x="447" y="333+(#sh-2460)/2"/>
+      <Image name="dj" src="two/dj/xz.png" x="567" y="373+(#sh-2460)/2">
+        <AlphaAnimation>
+          <Alpha a="255" time="0"/>
+          <Alpha a="255" time="2000"/>
+          <Alpha a="0" time="3000"/>
+          <Alpha a="0" time="10000000000"/>
+        </AlphaAnimation>
+      </Image>
+      <Button h="277" visibility="eq(#set,1)" w="502" x="472" y="350+(#sh-2460)/2">
+        <Triggers>
+          <Trigger action="up">
+            <Command target="dj.animation" value="stop"/>
+            <Command target="dj.animation" value="play"/>
+          </Trigger>
+        </Triggers>
+      </Button>
+    </Group>
+    <Button h="277" visibility="eq(#set,1)" w="502" x="472" y="350+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up" condition="gt(#touch_begin_y-#touch_y,100)">
+          <VariableCommand condition="gt(#touch_begin_y-#touch_y,100)" expression="ifelse(eq(#app_qh,0),1,0)" name="app_qh" persist="true"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Group visibility="eq(#app_qh,1)">
+      <Image src="two/music/m_bg.png" x="448" y="340+(#sh-2460)/2"/>
+      <Image src="two/music/m.png" srcid="#m_xz" x="743" y="408+(#sh-2460)/2"/>
+      <Image pivotX="202/2" pivotY="196/2" src="two/music/cp.png" visibility="eq(#bf,0)" x="521" y="391+(#sh-2460)/2">
+        <RotationAnimation>
+          <Rotation angle="0" time="0"/>
+          <Rotation angle="360" time="5000"/>
+        </RotationAnimation>
+      </Image>
+      <Image pivotX="202/2" pivotY="196/2" src="two/music/cp.png" visibility="eq(#bf,1)" x="521" y="391+(#sh-2460)/2"/>
+      <Image src="two/music/d.png" srcid="#bf" x="485" y="366+(#sh-2460)/2"/>
+      <Image src="two/music/k.png" srcid="#bf" x="768" y="518+(#sh-2460)/2"/>
+      <Image src="two/music/r_0.png" x="694" y="538+(#sh-2460)/2"/>
+      <Image name="r11" src="two/music/r_1.png" x="694" y="538+(#sh-2460)/2">
+        <AlphaAnimation>
+          <Alpha a="255" time="0"/>
+          <Alpha a="0" time="600"/>
+          <Alpha a="0" time="10000000000"/>
+        </AlphaAnimation>
+      </Image>
+      <Button h="55" visibility="eq(#set,1)" w="46" x="711" y="550+(#sh-2460)/2">
+        <Triggers>
+          <Trigger action="up">
+            <VariableCommand expression="ifelse(gt(#m_xz,0),#m_xz-1,0)" name="m_xz" persist="true"/>
+            <Command target="r11.animation" value="stop"/>
+            <Command target="r11.animation" value="play"/>
+          </Trigger>
+        </Triggers>
+      </Button>
+      <Button h="68" visibility="eq(#set,1)" w="71" x="794" y="543+(#sh-2460)/2">
+        <Triggers>
+          <Trigger action="up">
+            <VariableCommand expression="ifelse(eq(#bf,0),1,0)" name="bf" persist="true"/>
+          </Trigger>
+        </Triggers>
+      </Button>
+      <Image src="two/music/l_0.png" x="881" y="539+(#sh-2460)/2"/>
+      <Image name="l11" src="two/music/l_1.png" x="881" y="539+(#sh-2460)/2">
+        <AlphaAnimation>
+          <Alpha a="255" time="0"/>
+          <Alpha a="0" time="600"/>
+          <Alpha a="0" time="10000000000"/>
+        </AlphaAnimation>
+      </Image>
+      <Button h="36" visibility="eq(#set,1)" w="44" x="899" y="561+(#sh-2460)/2">
+        <Triggers>
+          <Trigger action="up">
+            <VariableCommand expression="ifelse(le(#m_xz,1),#m_xz+1,2)" name="m_xz" persist="true"/>
+            <Command target="l11.animation" value="stop"/>
+            <Command target="l11.animation" value="play"/>
+          </Trigger>
+        </Triggers>
+      </Button>
+      <Image alpha="0" h="168" name="app_qqmusic" srcExp="&apos;com.tencent.qqmusic,com.tencent.qqmusic.activity.AppStarterActivity&apos;" srcType="ApplicationIcon" w="168" x="0" y="0"/>
+      <Image alpha="0" h="168" name="app_wyy" srcExp="&apos;com.kugou.android,com.kugou.android.app.splash.SplashActivity&apos;" srcType="ApplicationIcon" w="168" x="0" y="0"/>
+      <Image alpha="0" h="168" name="app_kg" srcExp="&apos;com.netease.cloudmusic,com.netease.cloudmusic.activity.LoadingActivity&apos;" srcType="ApplicationIcon" w="168" x="0" y="0"/>
+      <Button h="112" visibility="eq(#set,1)" w="208" x="734" y="401+(#sh-2460)/2">
+        <Triggers>
+          <Trigger action="up">
+            <IntentCommand action="android.intent.action.VIEW" condition="!#app_qqmusic.bmp_width*eq(#m_xz,0)" uri="market://details?id=com.tencent.qqmusic&amp;ref=mithemelocksreen"/>
+            <IntentCommand action="android.intent.action.VIEW" condition="!#app_kg.bmp_width*eq(#m_xz,1)" uri="market://details?id=com.kugou.android&amp;ref=mithemelocksreen"/>
+            <IntentCommand action="android.intent.action.VIEW" condition="!#app_wyy.bmp_width*eq(#m_xz,2)" uri="market://details?id=com.netease.cloudmusic&amp;ref=mithemelocksreen"/>
+            <IntentCommand action="android.intent.action.MAIN" class="com.tencent.qqmusic.activity.AppStarterActivity" condition="#app_qqmusic.bmp_width*eq(#m_xz,0)" package="com.tencent.qqmusic"/>
+            <IntentCommand action="android.intent.action.MAIN" class="com.kugou.android.app.splash.SplashActivity" condition="#app_kg.bmp_width*eq(#m_xz,1)" package="com.kugou.android"/>
+            <IntentCommand action="android.intent.action.MAIN" class="com.netease.cloudmusic.activity.LoadingActivity" condition="#app_wyy.bmp_width*eq(#m_xz,2)" package="com.netease.cloudmusic"/>
+            <ExternCommand command="unlock"/>
+          </Trigger>
+        </Triggers>
+      </Button>
+    </Group>
+    <Image src="two/xj_0.png" x="671" y="667+(#sh-2460)/2"/>
+    <Image name="xj" src="two/xj_1.png" x="671" y="667+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="119" visibility="eq(#set,1)" w="287" x="683" y="680+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <IntentCommand action="android.intent.action.MAIN" class="com.oppo.camera.Camera" package="com.oppo.camera"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.android.camera.CameraActivity" package="com.android.camera"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.android.camera.Camera" package="com.android.camera"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.huawei.camera" package="com.huawei.camera"/>
+          <ExternCommand command="unlock"/>
+          <Command target="xj.animation" value="stop"/>
+          <Command target="xj.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/biao/biao_1.png" x="663" y="830+(#sh-2460)/2"/>
+    <Image name="biao" src="two/biao/biao_0.png" x="663" y="830+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="437" visibility="eq(#set,1)" w="338" x="663" y="830+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <Command target="biao.animation" value="stop"/>
+          <Command target="biao.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image pivotX="13/2" pivotY="38" rotation="#hour12*30+#minute*0.5" src="two/biao/hour.png" x="825" y="939+(#sh-2460)/2"/>
+    <Image pivotX="13/2" pivotY="45" rotation="#minute*6" src="two/biao/minute.png" x="825" y="931+(#sh-2460)/2"/>
+    <Image pivotX="4" pivotY="65" rotation="#secon*6" src="two/biao/secon.png" x="828" y="913+(#sh-2460)/2"/>
+    <Image src="two/biao/dot.png" x="804" y="949+(#sh-2460)/2"/>
+    <Image pivotX="47" pivotY="1" src="two/biao/bd.png" x="790" y="1077+(#sh-2460)/2">
+      <RotationAnimation>
+        <Rotation angle="-10" time="0"/>
+        <Rotation angle="10" time="1000"/>
+        <Rotation angle="-10" time="2000"/>
+      </RotationAnimation>
+    </Image>
+    <Image src="two/time_0.png" x="658" y="1254+(#sh-2460)/2"/>
+    <Image name="te" src="two/time_1.png" x="658" y="1254+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="190" visibility="eq(#set,1)" w="273" x="699" y="1277+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <Command target="te.animation" value="stop"/>
+          <Command target="te.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+    <Image src="two/time/time.png" srcid="ifelse(#time_format,#hour24/10,ifelse(eq(#hour12,0),1,#hour12/10))" x="714" y="1314+(#sh-2460)/2"/>
+    <Image src="two/time/time.png" srcid="ifelse(#time_format,#hour24%10,ifelse(eq(#hour12,0),2,#hour12%10))" x="766" y="1314+(#sh-2460)/2"/>
+    <Image src="two/time/dot.png" x="804" y="1314+(#sh-2460)/2"/>
+    <Image src="two/time/time.png" srcid="int(#minute/10)" x="846" y="1314+(#sh-2460)/2"/>
+    <Image src="two/time/time.png" srcid="int(#minute%10)" x="898" y="1314+(#sh-2460)/2"/>
+    <Image src="two/date/date.png" srcid="int((#month+1)/10)" x="714" y="1403+(#sh-2460)/2"/>
+    <Image src="two/date/date.png" srcid="int((#month+1)%10)" x="734" y="1403+(#sh-2460)/2"/>
+    <Image src="two/date/dot.png" x="753" y="1403+(#sh-2460)/2"/>
+    <Image src="two/date/date.png" srcid="int(#date/10)" x="772" y="1403+(#sh-2460)/2"/>
+    <Image src="two/date/date.png" srcid="int(#date%10)" x="792" y="1403+(#sh-2460)/2"/>
+    <Image src="two/date/n1.png" x="817" y="1403+(#sh-2460)/2"/>
+    <Image src="two/week/week.png" srcid="#day_of_week-1" x="836" y="1402+(#sh-2460)/2"/>
+    <Image src="two/llq_0.png" x="567" y="1521+(#sh-2460)/2"/>
+    <Image name="llq" src="two/llq_1.png" x="567" y="1521+(#sh-2460)/2">
+      <AlphaAnimation>
+        <Alpha a="255" time="0"/>
+        <Alpha a="255" time="2000"/>
+        <Alpha a="0" time="3000"/>
+        <Alpha a="0" time="10000000000"/>
+      </AlphaAnimation>
+    </Image>
+    <Button h="141" visibility="eq(#set,1)" w="384" x="593" y="1531+(#sh-2460)/2">
+      <Triggers>
+        <Trigger action="up">
+          <IntentCommand action="android.intent.action.MAIN" class="com.vivo.browser.BrowserActivity" package="com.vivo.browser"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.android.browser.launch.SplashActivity" package="com.android.browser"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.android.browser.BrowserActivity" package="com.heytap.browser"/>
+          <IntentCommand action="android.intent.action.MAIN" class="com.huawei.browser.Main2" package="com.huawei.browser"/>
+          <ExternCommand command="unlock"/>
+          <Command target="llq.animation" value="stop"/>
+          <Command target="llq.animation" value="play"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Group>
+  <Image alpha="180" src="db.png" x="0" y="0"/>
+  <Group name="unlocker">
+    <Button h="#screen_height" w="#screen_width">
+      <Triggers>
+        <Trigger action="up">
+          <ExternCommand command="unlock" condition="ge(#touch_begin_y-#touch_y,300)*eq(#noticeDown,0)"/>
+        </Trigger>
+      </Triggers>
+    </Button>
+  </Group>
+  <Notification size="1" y="1400"/>
+</Lockscreen>
