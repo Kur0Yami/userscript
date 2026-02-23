@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<MIUI_Theme_Values>
+
+	<!-- Window Background -->
+	<drawable name="miuix_appcompat_v5_settings_window_bg_dark.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_v5_window_bg_dark.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_settings_window_bg_dark.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_bg_dark.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_bg_secondary_dark.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_content_mask_navigation.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_content_mask_oled.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_content_mask.9.png" package="miui">window_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_window_search_mask_navigation.9.png" package="miui">window_bg_dark.9.png</drawable>
+	
+	<!-- Category Background -->
+	<drawable name="miuix_preference_category_bg_dark.9.png" package="miui">kevin.9.png</drawable>
+	<drawable name="miuix_preference_category_bg_first_dark.9.png" package="miui">kevin.9.png</drawable>
+	<drawable name="miuix_preference_category_bg_first_no_title_dark.9.png" package="miui">kevin.9.png</drawable>
+	<drawable name="miuix_preference_category_bg_no_title_dark.9.png" package="miui">kevin.9.png</drawable>
+	
+	
+	<!-- Search Bar -->
+	<drawable name="miuix_appcompat_search_mode_edit_text_bg_dark.9.png" package="miui">search_mode_edit_text_bg_dark.9.png</drawable>
+	
+	<!--miuix_appcompat_action_bar_dark-->
+	<drawable name="miuix_appcompat_search_mode_input_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_bar_embeded_tabs_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_bar_stack_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_bar_title_stack_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_bar_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_mode_bg_dark.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_bar_action_mode_bg.9.png">action_bar_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_action_mode_background.9.png">action_bar_bg_dark.9.png</drawable>
+	
+	<!--preference-->
+	<drawable name="contact_list_item_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_list_item_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_top_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_top_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_top_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_first_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_first_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_last_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_last_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_middle_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_middle_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_single_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_single_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_top_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="contact_detail_list_item_bg_top_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_first_dark_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_first_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_last_dark_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_last_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_middle_dark_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_middle_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_single_dark_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="edit_text_bg_spinner_single_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="editor_button_bg_n.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="editor_button_bg_p.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_list_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_list_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_track_background.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_unknown_window_title_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_unknown_window_title_bg_press.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_window_title_bg_press.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="quickcontact_window_title_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="spinner_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="spinner_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="spinner_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="spinner_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_item_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_item_background_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_first_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_last_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_middle_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_single_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_bg_selected_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_bg_activated_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_item_overstepped_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="phrase_list_bg_first_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="phrase_list_bg_last_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="phrase_list_bg_middle_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="phrase_list_bg_single_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="preference_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="password_keyboard_background_holo.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_menu_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_menu_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_menu_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="list_small_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="message_view_bg_error_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="message_view_bg_guide_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="message_view_bg_warning_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_item_background_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_bg_dark_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_item_radio_background_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_item_radio_two_state_background.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_first_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_last_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_middle_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_radio_bg_dark_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_radio_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_radio_two_state_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_radio_two_state_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_single_item_radio_two_state_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_first_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_item_bg.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_last_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_middle_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_with_icon_bg_normal.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_with_icon_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_with_icon_bg_pressed.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_preference_single_item_with_icon_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_item_bg_normal_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_ist_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_item_bg_selected_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_item_bg_activated_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_item_overstepped_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_menu_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_menu_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_menu_item_bg_pressed_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_appcompat_list_small_item_bg_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	<drawable name="miuix_preference_category_bg_first_dark.9.png">preference_item_bg_dark.9.png</drawable>
+	
+	<drawable name="miuix_action_icon_back_dark.9.png" package="miui">action_bar_back_dark.png</drawable>
+	<drawable name="miuix_appcompat_intent_arrow_right.9.png" package="miui">arrow_right_dark.png</drawable>
+	<drawable name="miuix_appcompat_ic_edit_text_search_dark.9.png" package="miui">miuix_appcompat_ic_edit_text_search_dark.png</drawable>
+	
+	
+	<!-- -->
+	<drawable name="card_view_corner.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="card_shape_corner.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="ringtone_shape_corner.9.png">card_shape_corner.9.png</drawable>
+
+	<drawable name="device_card_back_ground.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="contextual_card_background.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="data_grid_secondary.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="miui_face_enroll_success_name_edit.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="miuix_appcompat_filter_sort_tab_view_bg_dark.9.png">card_shape_corner.9.png</drawable>
+	<drawable name="select_app_preference_item.9.png">card_shape_corner.9.png</drawable>
+	
+</MIUI_Theme_Values>
